@@ -208,7 +208,7 @@ def escape_md_section(text: str, snob: bool = False) -> str:
     """
     Escapes markdown-sensitive characters across whole document sections.
     """
-    text = config.RE_MD_BACKSLASH_MATCHER.sub(r"\\\1", text)
+    #text = config.RE_MD_BACKSLASH_MATCHER.sub(r"\\\1", text)
 
     if snob:
         text = config.RE_MD_CHARS_MATCHER_ALL.sub(r"\\\1", text)

@@ -669,14 +669,16 @@ class HTML2Text(html.parser.HTMLParser):
             elif self.bypass_tables:
                 if start:
                     self.soft_br()
+                attr_part = (' ' + ' '.join([f'{key}="{value}"' for key, value in attrs.items()])) if attrs else '' 
                 if tag in ["td", "th"]:
                     if start:
-                        self.o("<{}>\n\n".format(tag))
+                        # self.o("<{}>\n\n".format(tag))
+                        self.o("<{}{}>\n\n".format(tag, attr_part))
                     else:
                         self.o("\n</{}>".format(tag))
                 else:
                     if start:
-                        self.o("<{}>".format(tag))
+                        self.o("<{}{}>".format(tag, attr_part))
                     else:
                         self.o("</{}>".format(tag))
 
